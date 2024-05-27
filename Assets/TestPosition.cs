@@ -18,9 +18,9 @@ public class TestPosition : MonoBehaviour {
         originX = screenW / 2;
         screenH = Screen.height;
         offsetX = screenW + ui.rect.width / 2;
-        Debug.Log ("screenW:" + screenW);
-        Debug.Log ("ui.sizeDelta.x:" + ui.sizeDelta.x);
-        Debug.Log ("ui.rect.width:" + ui.rect.width);
+        Debug.Log ($"screenW:{screenW}");
+        Debug.Log ($"ui.sizeDelta.x:{ui.sizeDelta.x}");
+        Debug.Log ($"ui.rect.width:{ui.rect.width}");
         btn.onClick.AddListener (ToggleVisibility);
 
         isShow = false;
@@ -34,13 +34,13 @@ public class TestPosition : MonoBehaviour {
     void ToggleVisibility () {
         isShow = !isShow;
 
-        sw.Reset (); //重置
+        sw.Reset ();
         sw.Start ();
         for (int i = 0; i < 10000000; i++) {
             outsidePos.x = isShow?originX : offsetX;
             ui.position = outsidePos;
         }
         sw.Stop ();
-        Debug.Log (string.Format ("for循环使用时间 {0} ms", sw.ElapsedMilliseconds));
+        Debug.Log ($"for循环使用时间 {sw.ElapsedMilliseconds} ms");
     }
 }

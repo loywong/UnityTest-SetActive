@@ -19,12 +19,13 @@ public class TestAlpha : MonoBehaviour {
     void ToggleVisibility () {
         isShow = !isShow;
 
-        sw.Reset (); //重置
+        sw.Reset ();
         sw.Start ();
         for (int i = 0; i < 10000000; i++) {
             ui.alpha = isShow?1 : 0;
+            ui.blocksRaycasts = isShow;
         }
         sw.Stop ();
-        Debug.Log (string.Format ("for循环使用时间 {0} ms", sw.ElapsedMilliseconds));
+        Debug.Log ($"for循环使用时间 {sw.ElapsedMilliseconds} ms");
     }
 }
